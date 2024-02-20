@@ -61,7 +61,14 @@
 - exceptions
     - try...catch...finally
     - throw
-- function
+
+### Functions
+- Functions are first class citizens
+- Functions can be treated like data
+    - functions can be assigned as values to variables
+    - Higher Order Functions
+        - functions can be passed as arguments to other functions
+        - functions can be returned as return values from other functions 
 ### APIs
 
 
