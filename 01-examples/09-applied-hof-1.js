@@ -9,7 +9,7 @@ function logOperation(operation, x, y){
 // usage
 logOperation(add,100,200)
 logOperation(subtract, 100, 200)
-logOperation(function(x,y){
+logOperation(function multiply(x,y){
     console.log('multiply result :', x * y);
 }, 100, 200)
 
