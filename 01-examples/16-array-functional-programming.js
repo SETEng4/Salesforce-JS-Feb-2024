@@ -51,12 +51,33 @@ var evenNos = filter(nos, isEven)
 var evenNos = nos.filter(function(no){
     return no % 2 === 0;
 })
+console.log(evenNos);
 
 // map (transformation)
 var doubleNos = nos.map(function(no){
     return no * 2;
 })
+console.log(doubleNos);
 
+// find (returns the first value that matches the given predicate)
+nos.find(function(no){
+    return no < 10;
+})
 
+// every (returns true if all the values in the array satisfies the given predicate)
+var areAllEvenNos = nos.find(function(no){
+    return no % 2 === 0;
+})
 
+// some (returns true if atleast one value in the array satisfies the given predicate)
+var areThereAnyEvenNos = nos.some(function(no){
+    return no % 2 === 0;
+})
+
+// forEach (perform some action on each item in the array)
+nos.forEach(function(no){
+    console.log('no : ', no);
+})
+
+// HOMEWORK : study 'reduce' method
 
