@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        #ulProducts {
+            list-style: none;
+            width: 400px;
+            -webkit-padding-start: 0px;
+        }
+        #ulProducts > li {
+            border : 1px solid gray;
+            border-radius: 5px;
+            background-color: #e7e7e7;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        /* 
+        function onBtnShowClick(){
+            var productName = 'Pen';
+            var productItem = document.createElement('li');
+            productItem.innerText = productName;
+
+            var ulProducts = document.getElementById('ulProducts');
+            ulProducts.appendChild(productItem);
+        } 
+        */
+        function onDocumentLoad(){
+            
+        }
+        window.addEventListener('load', onDocumentLoad)
+    </script>
+</head>
+<body>
+    <h1>Products</h1>
+    <label for="">Product Name:</label>
+    <input type="text" name="" id="txtNewProductName">
+    <button id="btnAdd">Add Product</button>
+    <ul id="ulProducts">
+        <!-- 
+            <li>Pen</li>
+            <li>Pencil</li>
+            <li>Marker</li> 
+        -->
+    </ul>
+</body>
+</html>
