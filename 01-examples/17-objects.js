@@ -47,3 +47,27 @@ for(var key in product){
 }
 
 // print the name & value of all the attributes in the product object
+for(var key in product){
+    console.log(key, product[key])
+}
+
+// using 'Object' methods
+//=> returns an array of attribute names
+Object.keys(product) 
+
+// print all the attributes and their values
+Object
+    .keys(product)
+    .forEach(function(key){
+        console.log(key, product[key])
+    })
+
+//=> returns an array of attribute values
+Object.values(product) 
+
+// print the attributes whose value is a number
+Object
+    .keys(product)
+    .filter(function(key){
+        return typeof(product[key]) === 'number'
+    })
