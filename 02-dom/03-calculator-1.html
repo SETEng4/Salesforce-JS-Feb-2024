@@ -4,6 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator-1</title>
+    <script>
+        function calculate(operation){
+            var n1 = document.getElementById('txtNumber1').valueAsNumber;
+            var n2 = document.getElementById('txtNumber2').valueAsNumber;
+            var result = 0;
+
+            switch (operation) {
+                case 'add':
+                    result = n1 + n2
+                    break;
+                case 'subtract':
+                    result = n1 - n2
+                    break;
+                case 'multiply':
+                    result = n1 * n2
+                    break;
+                case 'divide':
+                    result = n1 / n2
+                    break;
+            }
+            document.getElementById('divResult').innerText = result;
+        }
+        function onBtnAddClick(){
+            calculate('add')
+        }
+        function onBtnSubtractClick(){
+            calculate('subtract')
+        }
+        function onBtnMultiplyClick(){
+            calculate('multiply')
+        }
+        function onBtnDivideClick(){
+            calculate('divide')
+        }
+
+        function onDocumentLoad(){
+            document.getElementById('btnAdd').addEventListener('click', onBtnAddClick)
+            document.getElementById('btnSubtract').addEventListener('click', onBtnSubtractClick)
+            document.getElementById('btnMultiply').addEventListener('click', onBtnMultiplyClick)
+            document.getElementById('btnDivide').addEventListener('click', onBtnDivideClick)
+        }
+        window.addEventListener('load', onDocumentLoad)
+    </script>
 </head>
 <body>
     <h1>Calculator-1</h1>
