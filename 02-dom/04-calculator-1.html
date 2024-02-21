@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator-1</title>
+    <script>
+        function onBtnOperationClick(evt){
+            var operation = evt.target.innerText.toLowerCase();
+            var n1 = document.getElementById('txtNumber1').valueAsNumber;
+            var n2 = document.getElementById('txtNumber2').valueAsNumber;
+            var result = 0;
+
+            switch (operation) {
+                case 'add':
+                    result = n1 + n2
+                    break;
+                case 'subtract':
+                    result = n1 - n2
+                    break;
+                case 'multiply':
+                    result = n1 * n2
+                    break;
+                case 'divide':
+                    result = n1 / n2
+                    break;
+            }
+            document.getElementById('divResult').innerText = result;
+        }
+        
+
+        function onDocumentLoad(){
+            document.getElementById('btnAdd').addEventListener('click', onBtnOperationClick)
+            document.getElementById('btnSubtract').addEventListener('click', onBtnOperationClick)
+            document.getElementById('btnMultiply').addEventListener('click', onBtnOperationClick)
+            document.getElementById('btnDivide').addEventListener('click', onBtnOperationClick) 
+           
+        }
+        window.addEventListener('load', onDocumentLoad)
+    </script>
+</head>
+<body>
+    <h1>Calculator-1</h1>
+    <hr>
+    <input type="number" name="" id="txtNumber1">
+    <input type="number" name="" id="txtNumber2">
+    <br>
+    <button id="btnAdd">Add</button>
+    <button id="btnSubtract">Subtract</button>
+    <button id="btnMultiply">Multiply</button>
+    <button id="btnDivide">Divide</button>
+    <div id="divResult">[Result]</div>
+</body>
+</html>
