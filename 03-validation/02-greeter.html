@@ -8,6 +8,11 @@
         #divError {
             color: red;
         }
+
+        .error{
+            border : 1px solid red;
+            background-color: papayawhip;
+        }
     </style>
     <script>
         function onBtnGreetClick() {
@@ -19,11 +24,14 @@
 
             if (userName === ''){
                 document.getElementById('divError').innerText = 'Invalid user name!';
+                txtUserName.classList.add('error');
                 return
             }
 
             // clear the error message
             document.getElementById('divError').innerText = '';
+
+            txtUserName.classList.remove('error');
             
             // prepare the personalized greet message
             var greetMsg = 'Hi ' + userName + ', Have a nice day!';
@@ -35,18 +43,25 @@
             divMessage.innerText = greetMsg;
         }
 
-        function onTxtUserNameBlur(evt){
+        function onTxtUserNameValidate(evt){
             var txtUserName = evt.target;
 
             var userName = txtUserName.value;
 
             if (userName === '') {
+                // display the error message
                 document.getElementById('divError').innerText = 'Invalid user name!';
+
+                // apply the 'error' style to the textbox
+                txtUserName.classList.add('error');
                 return
             }
 
             // clear the error message
             document.getElementById('divError').innerText = '';
+
+            // remove the error style
+            txtUserName.classList.remove('error');
         }
 
         function onDocumentLoad() {
@@ -56,8 +71,11 @@
             // subscribe to the click event of the button
             btnGreet.addEventListener('click', onBtnGreetClick)
 
+            // bind 'blur' event of the text box for validation
+            // document.getElementById('txtUserName').addEventListener('blur', onTxtUserNameValidate)
+
             // bind 'input' event of the text box for validation
-            document.getElementById('txtUserName').addEventListener('blur', onTxtUserNameBlur)
+            document.getElementById('txtUserName').addEventListener('input', onTxtUserNameValidate)
         }
 
         // execute the given function when the document is loaded (when all the dom objects are created in the memory)
