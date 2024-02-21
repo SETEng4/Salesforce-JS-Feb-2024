@@ -65,7 +65,7 @@ nos.find(function(no){
 })
 
 // every (returns true if all the values in the array satisfies the given predicate)
-var areAllEvenNos = nos.find(function(no){
+var areAllEvenNos = nos.every(function(no){
     return no % 2 === 0;
 })
 
@@ -80,4 +80,27 @@ nos.forEach(function(no){
 })
 
 // HOMEWORK : study 'reduce' method
+// reduce - aggregate (convert a list of values into one value)
 
+// summation using reduce
+nos.reduce(function(prevResult, nextVal){
+    var newResult = prevResult + nextVal
+    console.log('prevResult = ', prevResult, ' nextVal = ', nextVal, 'newResult = ', newResult);
+    return newResult;
+});
+
+nos.reduce(function(prevResult, nextVal){
+    var newResult = prevResult + nextVal
+    console.log('prevResult = ', prevResult, ' nextVal = ', nextVal, 'newResult = ', newResult);
+    return newResult;
+}, 0);
+
+// finding max using reduce
+nos.reduce(function(prevResult, nextVal){
+    return prevResult > nextVal ? prevResult : nextVal;
+})
+
+// finding min using reduce
+nos.reduce(function(prevResult, nextVal){
+    return prevResult < nextVal ? prevResult : nextVal;
+})
