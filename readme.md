@@ -69,6 +69,9 @@
     - Higher Order Functions
         - functions can be passed as arguments to other functions
         - functions can be returned as return values from other functions 
+### Objects
+- dictionaries
+- collection of key/value pairs
 ### APIs
 
 
