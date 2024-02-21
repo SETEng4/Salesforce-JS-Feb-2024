@@ -23,13 +23,15 @@
             var userName = txtUserName.value;
 
             if (userName === ''){
-                document.getElementById('divError').innerText = 'Invalid user name!';
+                // document.getElementById('divError').innerText = 'Invalid user name!';
+                document.getElementById('divError').style.display = 'block';
                 txtUserName.classList.add('error');
                 return
             }
 
             // clear the error message
-            document.getElementById('divError').innerText = '';
+            // document.getElementById('divError').innerText = '';
+            document.getElementById('divError').style.display = 'none';
 
             txtUserName.classList.remove('error');
             
@@ -50,7 +52,8 @@
 
             if (userName === '') {
                 // display the error message
-                document.getElementById('divError').innerText = 'Invalid user name!';
+                // document.getElementById('divError').innerText = 'Invalid user name!';
+                document.getElementById('divError').style.display = 'block';
 
                 // apply the 'error' style to the textbox
                 txtUserName.classList.add('error');
@@ -58,7 +61,8 @@
             }
 
             // clear the error message
-            document.getElementById('divError').innerText = '';
+            // document.getElementById('divError').innerText = '';
+            document.getElementById('divError').style.display = 'none';
 
             // remove the error style
             txtUserName.classList.remove('error');
@@ -76,6 +80,8 @@
 
             // bind 'input' event of the text box for validation
             document.getElementById('txtUserName').addEventListener('input', onTxtUserNameValidate)
+
+            
         }
 
         // execute the given function when the document is loaded (when all the dom objects are created in the memory)
@@ -88,7 +94,7 @@
     <label for="">User Name :</label>
     <input type="text" name="" id="txtUserName">
     <button id="btnGreet">Greet</button>
-    <div id="divError"></div>
+    <div id="divError" style="display: none;">Invalid user name!</div>
     <div id="divMessage">[default message]</div>
 </body>
 </html>
