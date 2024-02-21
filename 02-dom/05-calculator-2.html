@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator-1</title>
+    <script>
+        function onBtnOperationClick(evt){
+            var operation = document.getElementById('selectOperation').value
+            var n1 = document.getElementById('txtNumber1').valueAsNumber;
+            var n2 = document.getElementById('txtNumber2').valueAsNumber;
+            var result = 0;
+
+            switch (operation) {
+                case 'add':
+                    result = n1 + n2
+                    break;
+                case 'subtract':
+                    result = n1 - n2
+                    break;
+                case 'multiply':
+                    result = n1 * n2
+                    break;
+                case 'divide':
+                    result = n1 / n2
+                    break;
+                default:
+                    result = 'Invalid operation!'
+            }
+            document.getElementById('divResult').innerText = result;
+        }
+        
+        function onDocumentLoad(){
+            document.getElementById('btnCalculate').addEventListener('click', onBtnOperationClick)
+        }
+        window.addEventListener('load', onDocumentLoad)
+    </script>
+</head>
+<body>
+    <h1>Calculator-1</h1>
+    <hr>
+    <input type="number" name="" id="txtNumber1">
+    <input type="number" name="" id="txtNumber2">
+    <select name="" id="selectOperation">
+        <option value="">--- Select ---</option>
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select>
+    <button id="btnCalculate">Calculate</button>
+    <div id="divResult">[Result]</div>
+</body>
+</html>
