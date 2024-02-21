@@ -75,3 +75,55 @@
 ### APIs
 
 
+### DOM
+- Traversing the DOM tree
+```
+var body = document.body;
+var h1Ele = body.children[0];
+console.log(h1Ele.innerText)
+h1Ele.innerText = 'Welcome to DOM!'
+```
+
+- querying elements by id
+```
+var heading1 = document.getElementById('heading-1')
+```
+
+- querying elements by tag name
+```
+var paras = document.getElementsByTagName('p')
+```
+
+- querying elements by css class name
+```
+var highlightedElems = document.getElementsByClassName('highlight')
+```
+
+- querying elements by css selectors
+```
+var p = document.querySelector('body > div > p')
+```
+
+## Attributes for Manipulating DOM Nodes
+- innerText
+- innerHTML
+- value
+- checked
+- disabled
+- parentElement
+
+## Methods for Manipulating DOM Nodes
+- appendChild()
+- removeChild()
+- getAttribute()
+- createElement()
+- insertAdjacentElement()
+
+## Manipulate the css classes
+- classList.add()
+- classList.remove()
+- classList.contains()
+
+## Handling Events
+- addEventListener()
+- removeEventListener()
