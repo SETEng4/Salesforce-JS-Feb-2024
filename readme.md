@@ -165,3 +165,10 @@ var p = document.querySelector('body > div > p')
 ```
 npx json-server <data_file> [-p <port>]
 ```
+
+## JEST
+- unit testing library
+    - organize the test
+    - perform assertions
+- test runner
+- async testing
