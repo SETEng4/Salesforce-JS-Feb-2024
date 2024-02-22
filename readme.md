@@ -142,6 +142,7 @@ var p = document.querySelector('body > div > p')
 ### Ways to handle Asynchronous Operations in JS
 - callback
 - promise
+    - An object used to communicate the result of an async operation
 - async await
 - generators
 - observables

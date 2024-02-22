@@ -84,8 +84,16 @@
             if (peForm.reportValidity()){
                 var newProduct = products.addNew(peForm.productName.value, peForm.unitCost.value, peForm.units.value)
                 displayProduct(newProduct);
+                displayMessage('Product - [' + newProduct.id + '] added!')
             }
             evt.preventDefault();
+        }
+
+        function displayMessage(msg){
+            document.getElementById('divUserMessage').innerText = msg;
+            setTimeout(function(){
+                document.getElementById('divUserMessage').innerText = '';
+            }, 3000);
         }
         function onDocumentLoad(){
             var productEntryForm = document.getElementById('product-entry-form');
@@ -129,6 +137,9 @@
     </table>
     <div>
         <span>Total :</span><span id="spanTotal">0</span>
+    </div>
+    <div>
+        <div id="divUserMessage"></div>
     </div>
 </section>    
 </body>
