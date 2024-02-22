@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        section {
+            margin-bottom: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+        }
+
+        th {
+            width: 100px;
+        }
+
+        table {
+            border: 1px solid gray;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        body {
+            margin: 50px;
+        }
+    </style>
+    <script>
+        var products = {
+            list: [],
+            addNew: function (newProductName, unitCost, units) {
+                var newProduct = {
+                    id: this.list.length + 1,
+                    name: newProductName,
+                    units: units,
+                    unitCost: unitCost,
+                    itemValue: units * unitCost
+                }
+                this.list.push(newProduct)
+                return newProduct;
+            },
+            total: function () {
+                return this.list.reduce(function (prevResult, product) {
+                    return prevResult + product.itemValue
+                }, 0);
+            }
+        }
+        function displayProduct(newProduct) {
+            var productRow = document.createElement('tr');
+            var sNoCol = document.createElement('td');
+            sNoCol.innerText = newProduct.id
+            productRow.appendChild(sNoCol);
+
+            var productNameCol = document.createElement('td');
+            productNameCol.innerText = newProduct.name
+            productRow.appendChild(productNameCol);
+
+            var productUnitCostCol = document.createElement('td');
+            productUnitCostCol.innerText = newProduct.unitCost
+            productRow.appendChild(productUnitCostCol);
+
+            var productUnitsCol = document.createElement('td');
+            productUnitsCol.innerText = newProduct.units
+            productRow.appendChild(productUnitsCol);
+
+            var productItemValueCol = document.createElement('td');
+            productItemValueCol.innerText = newProduct.itemValue;
+            productRow.appendChild(productItemValueCol);
+
+            console.log(productRow.innerHTML);
+            document.getElementById('productsTable').appendChild(productRow);
+
+            // update the total
+            document.getElementById('spanTotal').innerText = products.total()
+        }
+        function onProductEntryFormSubmit(evt) {
+
+            var peForm = evt.target;
+            if (peForm.reportValidity()) {
+                var newProduct = products.addNew(peForm.productName.value, peForm.unitCost.value, peForm.units.value)
+                displayProduct(newProduct);
+                displayMessage('Product - [' + newProduct.id + '] added!')
+            }
+            evt.preventDefault();
+        }
+
+        function displayMessage(msg) {
+            document.getElementById('divUserMessage').innerText = msg;
+            setTimeout(function () {
+                document.getElementById('divUserMessage').innerText = '';
+            }, 3000);
+        }
+        function onDocumentLoad() {
+            var productEntryForm = document.getElementById('product-entry-form');
+            productEntryForm.addEventListener('submit', onProductEntryFormSubmit)
+        }
+        window.addEventListener('load', onDocumentLoad)
+        /* 
+        //to get the products from the server
+        var response = await fetch('http://localhost:3000/products')
+        var products = await response.json()
+        console.table(products)
+
+        // to create a new product in the server
+        var newProductData = { id : 0, name : 'scribble-pad', units : 5, unitCost : 15 }
+        var response = await fetch('http://localhost:3000/products', {
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(newProductData)
+        });
+        var newProduct = await response.json()
+        console.log(newProduct)
+        
+        */
+    </script>
+</head>
+
+<body>
+    <h1>Cart</h1>
+    <hr>
+    <section class="data-entry">
+        <form action="" id="product-entry-form" novalidate>
+            <div class="field">
+                <label for="">Product Name :</label>
+                <input type="text" name="productName" id="txtNewProductName" required minlength="3" maxlength="20"
+                    placeholder="Product Name">
+            </div>
+            <div class="field">
+                <label for="">Unit Cost :</label>
+                <input type="number" name="unitCost" id="txtUnitCost" required min="1" max="10" placeholder="Unit Cost">
+            </div>
+            <div class="field">
+                <label for="">Units :</label>
+                <input type="number" name="units" id="txtUnits" placeholder="Units">
+            </div>
+            <div class="field">
+                <input type="submit" value="Add" />
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+    </section>
+    <section class="products-list">
+        <table id="productsTable">
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Unit Cost</th>
+                <th>Units</th>
+                <th>Item Value</th>
+            </tr>
+        </table>
+        <div>
+            <span>Total :</span><span id="spanTotal">0</span>
+        </div>
+        <div>
+            <div id="divUserMessage"></div>
+        </div>
+    </section>
+</body>
+
+</html>

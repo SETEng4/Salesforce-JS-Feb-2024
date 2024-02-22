@@ -146,3 +146,22 @@ var p = document.querySelector('body > div > p')
 - async await
 - generators
 - observables
+
+## AJAX
+- Asynchronous JavaScript And XML
+
+## JSON
+- JavaScript Object Notation
+- String representation of a javascript object 
+- Easy to send across the wire
+- use JSON.parse() for deserialization (string to object)
+- use JSON.stringify() for serialization (object to string)
+
+## json-server (https://www.npmjs.com/package/json-server)
+- Javascript utility server
+- expose the data from a json file as REST endpoints
+- also can act as web server
+- to run the json-server:
+```
+npx json-server <data_file> [-p <port>]
+```
