@@ -172,3 +172,8 @@ npx json-server <data_file> [-p <port>]
     - perform assertions
 - test runner
 - async testing
+- setup:
+```
+npm init -y
+jest --init
+```
