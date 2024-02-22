@@ -38,18 +38,43 @@
         }
     </style>
     <script>
+        var productsApi = {
+            load : async function(){
+                var response = await fetch('http://localhost:3000/products')
+                var products = await response.json()
+                return products;
+            },
+            addNew : async function(newProductData){
+                
+                var response = await fetch('http://localhost:3000/products', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newProductData)
+                });
+                var newProduct = await response.json()
+                return newProduct;
+            }
+        }
         var products = {
             list: [],
-            addNew: function (newProductName, unitCost, units) {
-                var newProduct = {
-                    id: this.list.length + 1,
+            addNew: async function (newProductName, unitCost, units) {
+                var newProductData = {
+                    id: 0,
                     name: newProductName,
                     units: units,
                     unitCost: unitCost,
                     itemValue: units * unitCost
                 }
+                var newProduct =  await productsApi.addNew(newProductData);
                 this.list.push(newProduct)
                 return newProduct;
+            },
+            getAll : async function(){
+                var productList = await productsApi.load()
+                this.list = this.list.concat(productList);
+                return this.list;
             },
             total: function () {
                 return this.list.reduce(function (prevResult, product) {
@@ -57,6 +82,8 @@
                 }, 0);
             }
         }
+
+        // UI
         function displayProduct(newProduct) {
             var productRow = document.createElement('tr');
             var sNoCol = document.createElement('td');
@@ -85,15 +112,15 @@
             // update the total
             document.getElementById('spanTotal').innerText = products.total()
         }
-        function onProductEntryFormSubmit(evt) {
-
+        async function onProductEntryFormSubmit(evt) {
+            evt.preventDefault();
             var peForm = evt.target;
             if (peForm.reportValidity()) {
-                var newProduct = products.addNew(peForm.productName.value, peForm.unitCost.value, peForm.units.value)
+                var newProduct = await products.addNew(peForm.productName.value, peForm.unitCost.value, peForm.units.value)
                 displayProduct(newProduct);
                 displayMessage('Product - [' + newProduct.id + '] added!')
             }
-            evt.preventDefault();
+           
         }
 
         function displayMessage(msg) {
@@ -102,30 +129,14 @@
                 document.getElementById('divUserMessage').innerText = '';
             }, 3000);
         }
-        function onDocumentLoad() {
+        async function onDocumentLoad() {
             var productEntryForm = document.getElementById('product-entry-form');
             productEntryForm.addEventListener('submit', onProductEntryFormSubmit)
+            var productObjs = await products.getAll()
+            productObjs.forEach(displayProduct);
         }
         window.addEventListener('load', onDocumentLoad)
-        /* 
-        //to get the products from the server
-        var response = await fetch('http://localhost:3000/products')
-        var products = await response.json()
-        console.table(products)
-
-        // to create a new product in the server
-        var newProductData = { id : 0, name : 'scribble-pad', units : 5, unitCost : 15 }
-        var response = await fetch('http://localhost:3000/products', {
-            method : 'POST',
-            headers : {
-                'content-type' : 'application/json'
-            },
-            body : JSON.stringify(newProductData)
-        });
-        var newProduct = await response.json()
-        console.log(newProduct)
         
-        */
     </script>
 </head>
 

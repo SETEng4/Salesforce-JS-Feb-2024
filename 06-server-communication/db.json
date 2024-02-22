@@ -23,6 +23,13 @@
       "name": "scribble-pad",
       "units": 5,
       "unitCost": 15
+    },
+    {
+      "id": 5,
+      "name": "abc",
+      "units": "20",
+      "unitCost": "10",
+      "itemValue": 200
     }
   ]
 }
