@@ -135,3 +135,13 @@ var p = document.querySelector('body > div > p')
 - max
 - minLength
 - maxLength
+
+## Asynchronous Operations
+- An operation that will complete sometime in future and we dont wait for its completion
+
+### Ways to handle Asynchronous Operations in JS
+- callback
+- promise
+- async await
+- generators
+- observables

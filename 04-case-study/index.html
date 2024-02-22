@@ -83,7 +83,6 @@
             var peForm = evt.target;
             if (peForm.reportValidity()){
                 var newProduct = products.addNew(peForm.productName.value, peForm.unitCost.value, peForm.units.value)
-                console.log(newProduct);
                 displayProduct(newProduct);
             }
             evt.preventDefault();
