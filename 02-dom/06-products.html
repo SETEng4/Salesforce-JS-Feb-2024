@@ -19,18 +19,32 @@
         }
     </style>
     <script>
-        /* 
-        function onBtnShowClick(){
-            var productName = 'Pen';
-            var productItem = document.createElement('li');
-            productItem.innerText = productName;
-
+        
+        function onBtnAddClick(){
+            var newProductName = document.getElementById('txtNewProductName').value;
             var ulProducts = document.getElementById('ulProducts');
+
+            var productItem = document.createElement('li');
+
+            var spanProductName = document.createElement('span');
+            var productName = newProductName;
+            spanProductName.innerText = productName;
+            
+            var btnRemove = document.createElement('button');
+            btnRemove.innerText = 'X';
+            btnRemove.addEventListener('click', function(){
+                ulProducts.removeChild(productItem);
+            });
+
+            productItem.appendChild(spanProductName);
+            productItem.appendChild(btnRemove);
+
+            
             ulProducts.appendChild(productItem);
         } 
-        */
+       
         function onDocumentLoad(){
-            
+            document.getElementById('btnAdd').addEventListener('click', onBtnAddClick)
         }
         window.addEventListener('load', onDocumentLoad)
     </script>
@@ -41,13 +55,6 @@
     <input type="text" name="" id="txtNewProductName">
     <button id="btnAdd">Add Product</button>
     <ul id="ulProducts">
-        
-            <li>
-                <span>Pen</span>
-                <button>X</button>
-            </li>
-            
-       
     </ul>
 </body>
 </html>
