@@ -127,3 +127,11 @@ var p = document.querySelector('body > div > p')
 ## Handling Events
 - addEventListener()
 - removeEventListener()
+
+## Form
+### Validation Attributes (input elements)
+- required
+- min
+- max
+- minLength
+- maxLength
