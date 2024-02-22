@@ -44,10 +44,41 @@ function addAsyncPromise(x,y){
     return p;
 }
 
+/* 
 function addAsyncPromiseClient(x,y){
     console.log('[@client] starting the operation')
-    var p = addAsyncPromise(100,200)
+    var p = addAsyncPromise(x,y)
     p.then(function(result){
         console.log('[@client] operation completed, result :', result)
     })
+} 
+*/
+
+// 
+async function addAsyncPromiseClient(x,y){
+    console.log('[@client] starting the operation')
+    var result = await addAsyncPromise(x,y)
+    console.log('[@client] operation completed, result :', result)
+    return result * 2;
+    /* 
+    var p = addAsyncPromise(x,y)
+    p.then(function(result){
+        console.log('[@client] operation completed, result :', result)
+    }) 
+    */
 }
+
+
+// promise chaining (every subscription to a promise will return a new promise)
+/* 
+console.log('[@client] starting the operation')
+var p = addAsyncPromise(100,200)
+var p2 = p.then(function(result){
+    console.log('[@client] operation completed, result :', result);
+    var doubleResult = result * 2;
+    return doubleResult;
+})
+var p3 = p2.then(function(doubleResult){
+    console.log('doubleResult :', doubleResult);
+})
+*/
