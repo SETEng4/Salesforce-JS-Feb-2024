@@ -13,17 +13,19 @@ function addSyncClient(x,y){
 }
 
 // async
-function addAsync(x,y){
+function addAsyncCallback(x,y, callbackFn){
     console.log('   [@service] processing ', x, ' and ', y);
     setTimeout(function(){
         var result = x + y;
         console.log('   [@service] returning result');
-        return result;
-    }, 4000);
+        callbackFn(result)
+    }, 2000);
+
 }
 
-function addAsyncClient(x,y){
+function addAsyncCallbackClient(x,y){
     console.log('[@client] starting the operation')
-    var result = addAsync(x,y);
-    console.log('[@client] operation completed, result :', result)
+    addAsyncCallback(x,y, function(result){
+        console.log('[@client] operation completed, result :', result)
+    });
 }
