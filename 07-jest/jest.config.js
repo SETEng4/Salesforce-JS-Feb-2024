@@ -192,7 +192,7 @@ const config = {
   // watchPathIgnorePatterns: [],
 
   // Whether to use watchman for file crawling
-  // watchman: true,
+  watchman: false,
 };
 
 module.exports = config;

@@ -175,5 +175,9 @@ npx json-server <data_file> [-p <port>]
 - setup:
 ```
 npm init -y
-jest --init
+npx jest --init
+```
+- to run the tests:
+```
+npx jest
 ```
